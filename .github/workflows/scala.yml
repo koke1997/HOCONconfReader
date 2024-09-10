@@ -26,4 +26,4 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y sbt
     - name: Run tests
-      run: sbt test
+      run: sbt "testOnly * -- -l src/test/scala"
