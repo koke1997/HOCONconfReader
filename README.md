@@ -77,3 +77,92 @@ libraryDependencies += "com.typesafe" % "config" % "1.4.1"
 ```
 
 3. Run `sbt update` to download and install the dependencies.
+
+### Java Installation Instructions
+
+To install the necessary dependencies for Java, follow these steps:
+
+1. Ensure you have Java Development Kit (JDK) installed on your system.
+2. Create a `pom.xml` file in the root directory of your project.
+3. Add the following content to the `pom.xml` file:
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/POM/4.0.0">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>HOCONconfReader</artifactId>
+    <version>0.1</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.typesafe</groupId>
+            <artifactId>config</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+```
+
+4. Run `mvn clean install` to download and install the dependencies.
+
+### Python Installation Instructions
+
+To install the necessary dependencies for Python, follow these steps:
+
+1. Ensure you have Python installed on your system.
+2. Create a `requirements.txt` file in the root directory of your project.
+3. Add the following content to the `requirements.txt` file:
+
+```
+pyhocon
+```
+
+4. Run `pip install -r requirements.txt` to download and install the dependencies.
+
+### Running the Installation Scripts
+
+To run the installation scripts for Windows and Unix-based systems, follow these steps:
+
+#### Windows
+
+1. Open PowerShell as an administrator.
+2. Navigate to the root directory of your project.
+3. Run the following command:
+
+```sh
+.\install.ps1
+```
+
+#### Unix-based Systems
+
+1. Open a terminal.
+2. Navigate to the root directory of your project.
+3. Run the following command:
+
+```sh
+./install.sh
+```
