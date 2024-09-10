@@ -2,6 +2,7 @@ package com.example
 
 import org.scalatest.funsuite.AnyFunSuite
 import com.typesafe.config.ConfigFactory
+import java.io.File
 
 class HOCONParserTest extends AnyFunSuite {
 
@@ -32,8 +33,8 @@ class HOCONParserTest extends AnyFunSuite {
   }
 
   test("HOCONParser should correctly parse included configuration files") {
-    val config = ConfigFactory.parseResources("test.conf")
-    val uniqueKeys = HOCONParser.getAllKeys(config)
+    val config = ConfigFactory.parseFile(new File("src/test/resources/test.conf"))
+    val uniqueKeys = HOCONParser.parseConfig("src/test/resources/test.conf")
 
     val expectedKeys = Set(
       "included.settingA",
