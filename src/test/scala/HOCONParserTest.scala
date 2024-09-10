@@ -30,4 +30,18 @@ class HOCONParserTest extends AnyFunSuite {
 
     assert(uniqueKeys == expectedKeys)
   }
+
+  test("HOCONParser should correctly parse included configuration files") {
+    val config = ConfigFactory.parseResources("test.conf")
+    val uniqueKeys = HOCONParser.getAllKeys(config)
+
+    val expectedKeys = Set(
+      "included.settingA",
+      "included.settingB",
+      "main.setting1",
+      "main.setting2"
+    )
+
+    assert(uniqueKeys == expectedKeys)
+  }
 }
