@@ -59,6 +59,19 @@ scalac -cp "path/to/typesafe-config.jar" src/main/scala/com/example/HOCONParser.
 scala -cp "path/to/typesafe-config.jar:." com.example.Main
 ```
 
+### Running the File Selector
+
+To run the file selector via terminal, follow these steps:
+
+1. Ensure you have Scala installed on your system.
+2. Compile the Scala files using `scalac`.
+3. Run the `FileSelector` object using `scala`.
+
+```sh
+scalac -cp "path/to/typesafe-config.jar" src/main/scala/com/example/HOCONParser.scala src/main/scala/com/example/FileSelector.scala
+scala -cp "path/to/typesafe-config.jar:." com.example.FileSelector
+```
+
 ### Installation
 
 To install the necessary dependencies, follow these steps:
@@ -88,7 +101,7 @@ To install the necessary dependencies for Java, follow these steps:
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xsi="http://www.w3.org/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/POM/4.0.0">
 
     <modelVersion>4.0.0</modelVersion>
