@@ -101,4 +101,15 @@ class HOCONParserTest extends AnyFunSuite {
     }
     println("Finished test: HOCONParser should correctly parse a sample Play Framework .conf file")
   }
+
+  test("HOCONParser should return the correct value for a given key") {
+    println("Starting test: HOCONParser should return the correct value for a given key")
+    val filePath = "src/test/resources/test.conf"
+    val key = "main.setting1"
+    val expectedValue = "value1"
+    val actualValue = HOCONParser.getConfigValue(filePath, key)
+    println(s"Asserting key: $key, Actual value: $actualValue, Expected value: $expectedValue")
+    assert(actualValue == expectedValue, s"Actual: $actualValue, expected: $expectedValue")
+    println("Finished test: HOCONParser should return the correct value for a given key")
+  }
 }

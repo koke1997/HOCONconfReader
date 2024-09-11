@@ -21,4 +21,9 @@ object HOCONParser {
       }
     }.toSet
   }
+
+  def getConfigValue(filePath: String, key: String): String = {
+    val config: Config = ConfigFactory.parseFile(new java.io.File(filePath))
+    config.getString(key)
+  }
 }
