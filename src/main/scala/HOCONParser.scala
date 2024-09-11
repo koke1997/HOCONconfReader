@@ -1,29 +1,29 @@
 package com.example
 
-import com.typesafe.config.{Config, ConfigFactory}
-
-import scala.collection.JavaConverters._
+import com.typesafe.config.{Config, ConfigFactory, ConfigValueType}
+import scala.jdk.CollectionConverters._
 
 object HOCONParser {
   def parseConfig(filePath: String): Set[String] = {
-    val config: Config = ConfigFactory.parseFile(new java.io.File(filePath))
-    getAllKeys(config).toSet
-  }
-
-  private def getAllKeys(config: Config, parentKey: String = ""): Set[String] = {
-    config.entrySet().asScala.flatMap { entry =>
-      val key = if (parentKey.isEmpty) entry.getKey else s"$parentKey.${entry.getKey}"
-      entry.getValue.valueType() match {
-        case com.typesafe.config.ConfigValueType.OBJECT =>
-          getAllKeys(config.getConfig(entry.getKey), key)
-        case _ =>
-          Set(key)
-      }
-    }.toSet
+    val config = ConfigFactory.parseFile(new java.io.File(filePath))
+    config.entrySet().asScala.map(_.getKey).toSet
   }
 
   def getConfigValue(filePath: String, key: String): String = {
-    val config: Config = ConfigFactory.parseFile(new java.io.File(filePath))
-    config.getString(key)
+    val config = ConfigFactory.parseFile(new java.io.File(filePath))
+    if (config.hasPath(key)) {
+      val value = config.getValue(key)
+      value.valueType() match {
+        case ConfigValueType.STRING => config.getString(key)
+        case ConfigValueType.LIST => config.getList(key).unwrapped().toString
+        case ConfigValueType.NUMBER => config.getNumber(key).toString
+        case ConfigValueType.BOOLEAN => config.getBoolean(key).toString
+        case ConfigValueType.OBJECT => config.getObject(key).unwrapped().toString
+        case ConfigValueType.NULL => "null"
+        case _ => s"Unsupported type: ${value.valueType()}"
+      }
+    } else {
+      s"Key not found: $key"
+    }
   }
 }
