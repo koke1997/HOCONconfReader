@@ -101,7 +101,7 @@ To install the necessary dependencies for Java, follow these steps:
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/XMLSchema-instance"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/POM/4.0.0">
 
     <modelVersion>4.0.0</modelVersion>
@@ -179,3 +179,14 @@ To run the installation scripts for Windows and Unix-based systems, follow these
 ```sh
 ./install.sh
 ```
+
+### Running the React.js Web Application
+
+To run the React.js web application, follow these steps:
+
+1. Navigate to the `web` directory.
+2. Install the necessary dependencies by running `npm install`.
+3. Start the development server by running `npm run dev`.
+4. Open your web browser and navigate to `http://localhost:3000` to access the application.
+
+The web application allows users to upload HOCON files, which are then parsed by the backend server. The parsed results are displayed in a user-friendly format, such as a table, list, or collapsible tree view.
