@@ -1,7 +1,7 @@
 package com.example
 
 import org.scalatest.funsuite.AnyFunSuite
-import java.io.ByteArrayInputStream
+import java.io.{ByteArrayInputStream, ByteArrayOutputStream}
 
 class FileSelectorTest extends AnyFunSuite {
 
@@ -9,7 +9,7 @@ class FileSelectorTest extends AnyFunSuite {
     val input = "src/test/resources/test.conf\n"
     System.setIn(new ByteArrayInputStream(input.getBytes))
 
-    val output = new java.io.ByteArrayOutputStream()
+    val output = new ByteArrayOutputStream()
     Console.withOut(output) {
       FileSelector.main(Array.empty)
     }
