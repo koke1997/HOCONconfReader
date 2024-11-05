@@ -41,7 +41,7 @@ jobs:
               settingA = valueA_from_included
               settingB = valueB_from_included
             }' > src/test/resources/included.conf
-                - name: Run tests
-                  run: sbt "testOnly * -- -l src/test/scala"
-                - name: Clean up test files
-                  run: rm -f src/test/resources/test.conf src/test/resources/included.conf
+    - name: Run tests
+      run: sbt "testOnly * -- -l src/test/scala"
+    - name: Clean up test files
+      run: rm -f src/test/resources/test.conf src/test/resources/included.conf
