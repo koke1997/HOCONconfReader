@@ -2,6 +2,7 @@ package com.example
 
 import org.scalatest.funsuite.AnyFunSuite
 import java.io.{ByteArrayInputStream, ByteArrayOutputStream, File}
+import java.nio.file.{Files, Paths}
 
 class FileSelectorTest extends AnyFunSuite {
 
@@ -14,8 +15,6 @@ class FileSelectorTest extends AnyFunSuite {
     if (!testFile.exists()) {
       testFile.getParentFile.mkdirs()
       testFile.createNewFile()
-      import java.nio.file.Files
-      import java.nio.file.Paths
       Files.write(Paths.get(testFilePath),
         """included {
           |  settingA = valueA
